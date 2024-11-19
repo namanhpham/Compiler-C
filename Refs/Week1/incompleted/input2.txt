@@ -1,0 +1,31 @@
+PROGRAM Sample;
+VAR
+  x, y: INTEGER;
+  name: CHAR;
+BEGIN
+  x := 10;
+  y := 20;
+  
+  name := 'A';
+  
+  IF x < y THEN
+    y := y + x;
+  ELSE
+    x := x - y;
+  END;
+
+  WHILE x > 0 DO
+  BEGIN
+    x := x - 1;
+    y := y * 2;
+  END;
+  
+  (* This is a comment *)
+  y := y / 2;
+
+  (* Assigning some character *)
+  name := 'B';
+
+  (* Another string test *)
+  name := 'C';
+END.
