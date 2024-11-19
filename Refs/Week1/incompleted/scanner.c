@@ -54,20 +54,21 @@ void skipComment() {
 }
 
 Token* readIdentKeyword(void) {
-  // TODO
   Token *token = makeToken(TK_IDENT, lineNo, colNo);
   int count = 0;
 
-  // Đọc các ký tự thuộc định danh
+  // Read valid characters for an identifier (letters and digits).
   while ((charCodes[currentChar] == CHAR_LETTER || charCodes[currentChar] == CHAR_DIGIT) && count < MAX_IDENT_LEN) {
-    token->string[count++] = currentChar;
+    token->string[count++] = (char)currentChar; // Correctly cast to char.
     readChar();
   }
-  token->string[count] = '\0';
+  token->string[count] = '\0'; // Null-terminate the string.
 
-  // Kiểm tra xem chuỗi có khớp với từ khóa nào không
+  // Check if the identifier matches a keyword.
   TokenType type = checkKeyword(token->string);
-  token->tokenType = type;
+  if (type != TK_NONE) {
+    token->tokenType = type; // Update token type if it's a keyword.
+  }
 
   return token;
 }
