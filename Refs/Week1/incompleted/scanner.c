@@ -58,8 +58,13 @@ Token* readIdentKeyword(void) {
   int count = 0;
 
   // Read valid characters for an identifier (letters and digits).
-  while ((charCodes[currentChar] == CHAR_LETTER || charCodes[currentChar] == CHAR_DIGIT) && count < MAX_IDENT_LEN) {
-    token->string[count++] = (char)currentChar; // Correctly cast to char.
+  while (charCodes[currentChar] == CHAR_LETTER || charCodes[currentChar] == CHAR_DIGIT) {
+    if (count < MAX_IDENT_LEN) {
+      token->string[count++] = (char)currentChar; // Append character if within limit.
+    } else {
+      // If identifier length exceeds MAX_IDENT_LEN, continue reading but trigger an error.
+      error(ERR_IDENTTOOLONG, token->lineNo, token->colNo);
+    }
     readChar();
   }
   token->string[count] = '\0'; // Null-terminate the string.
@@ -72,6 +77,7 @@ Token* readIdentKeyword(void) {
 
   return token;
 }
+
 
 
 Token* readNumber(void) {
