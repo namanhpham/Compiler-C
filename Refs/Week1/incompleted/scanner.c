@@ -27,7 +27,6 @@ void skipBlank() {
 }
 
 void skipComment() {
-  // TODO
   // skip comment for KPL
   int ln = lineNo;
   int cn = colNo;
@@ -81,7 +80,6 @@ Token* readIdentKeyword(void) {
 
 
 Token* readNumber(void) {
-  // TODO
   Token *token = makeToken(TK_NUMBER, lineNo, colNo);
   int count = 0;
 
@@ -99,7 +97,6 @@ Token* readNumber(void) {
 }
 
 Token* readConstChar(void) {
-  // TODO
    Token *token = makeToken(TK_CHAR, lineNo, colNo);
 
   readChar();
@@ -146,7 +143,6 @@ Token* getToken(void) {
     readChar(); 
     return token;
     // ....
-    // TODO
     // ....
   case CHAR_MINUS:
     token = makeToken(SB_MINUS, lineNo, colNo);
