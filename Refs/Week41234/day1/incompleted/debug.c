@@ -13,6 +13,10 @@ void pad(int n) {
 }
 
 void printType(Type* type) {
+  if (type == NULL) {
+    printf("NULL");
+    return;
+  }
   switch (type->typeClass) {
   case TP_INT:
     printf("Int");
@@ -29,6 +33,10 @@ void printType(Type* type) {
 }
 
 void printConstantValue(ConstantValue* value) {
+  if (value == NULL) {
+    printf("NULL");
+    return;
+  }
   switch (value->type) {
   case TP_INT:
     printf("%d",value->intValue);
