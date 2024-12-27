@@ -27,6 +27,16 @@ int openInputStream(char *fileName) {
     return IO_ERROR;
   lineNo = 1;
   colNo = 0;
+
+  // Print the program
+  char ch;
+  while ((ch = fgetc(inputStream)) != EOF) {
+    putchar(ch);
+  }
+  // Print separator line
+  printf("\n**********************************************************\n");
+  rewind(inputStream); // Reset file pointer to the beginning
+
   readChar();
   return IO_SUCCESS;
 }
@@ -34,4 +44,3 @@ int openInputStream(char *fileName) {
 void closeInputStream() {
   fclose(inputStream);
 }
-
