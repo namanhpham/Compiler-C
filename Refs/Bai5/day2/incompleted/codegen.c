@@ -21,10 +21,16 @@ CodeBlock* codeBlock;
 
 void genVariableAddress(Object* var) {
   // TODO
+  int level = 0;
+  int offset = VARIABLE_OFFSET(var);
+  genLA(level, offset);
 }
 
 void genVariableValue(Object* var) {
   // TODO
+  int level = 0;
+  int offset = VARIABLE_OFFSET(var);
+  genLV(level, offset);
 }
 
 int isPredefinedFunction(Object* func) {
